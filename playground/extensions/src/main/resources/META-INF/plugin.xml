@@ -1,0 +1,22 @@
+<!--
+  ~ Copyright (c) Meta Platforms, Inc. and affiliates.
+  ~
+  ~ This source code is licensed under the MIT license found in the
+  ~ LICENSE file in the root directory of this source tree.
+  -->
+
+<!--THIS FILE IS GENERATED-->
+<idea-plugin>
+    <id>playground.extensions</id>
+    <name>PlaygroundExtensions</name>
+    <vendor>Facebook</vendor>
+    <description>
+        This is my wonderful extension to the ShapeTyping plugin!
+    </description>
+    <depends>com.intellij.modules.platform</depends>
+    <depends>shapeTyping</depends>
+    <extensions defaultExtensionNs="shapeTyping">
+     <shapeFunction implementation="playground.extensions.ShapeFunctionExtension_foo"/>
+    </extensions>
+    <idea-version since-build="201.*" until-build="212.*"/>
+</idea-plugin>

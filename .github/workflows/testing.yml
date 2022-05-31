@@ -1,0 +1,42 @@
+name: Testing
+on:
+  push:
+    branches:
+      main
+  pull_request:
+    branches:
+      main
+jobs:
+  testPublish:
+    runs-on: macos-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: set up jdk 11
+        uses: actions/setup-java@v2
+        with:
+          java-version: '11'
+          distribution: 'adopt'
+      - uses: actions/checkout@v2
+      - name: test plugin
+        run: |
+          pushd plugin
+          ./gradlew check --continue
+          ./gradlew publishToMavenLocal
+          popd
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: upload test results
+        uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: testResults
+          path: plugin/**/build/reports/tests/test/
+      - name: test playground
+        run: |
+          pushd playground
+          ./gradlew check --continue
+          popd
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

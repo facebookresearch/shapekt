@@ -1,0 +1,22 @@
+name: Publish plugin to diffkt
+on:
+  push:
+    branches:
+      main
+jobs:
+  publish:
+    runs-on: ubuntu-latest 
+    permissions: 
+      contents: read
+      packages: write 
+    steps:
+      # Check out repository
+      - uses: actions/checkout@v2
+      - name: Publish package
+        run: |
+          pushd plugin
+          ./gradlew publish -Pgroup=org.diffkt.shapeTyping -Pversion=0.1.0-$(git rev-parse --short HEAD)
+          popd
+        env:
+          GITHUB_ACTOR: ${{ secrets.DIFFKT_ACTOR }}
+          GITHUB_TOKEN: ${{ secrets.DIFFKT_TOKEN }}

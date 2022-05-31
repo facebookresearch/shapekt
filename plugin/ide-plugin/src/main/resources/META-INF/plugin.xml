@@ -1,0 +1,40 @@
+<!--
+  ~ Copyright (c) Meta Platforms, Inc. and affiliates.
+  ~
+  ~ This source code is licensed under the MIT license found in the
+  ~ LICENSE file in the root directory of this source tree.
+  -->
+
+<idea-plugin>
+    <id>shapeTyping</id>
+    <name>ShapeTyping</name>
+    <vendor>Facebook</vendor>
+    <description>
+        A plugin to track shape transformations and find shape compatibility errors.
+    </description>
+    <depends>com.intellij.modules.platform</depends>
+    <extensions defaultExtensionNs="com.intellij">
+        <annotator language="kotlin" implementationClass="shapeTyping.ide.ShapeTypingAnnotator"/>
+        <codeInsight.typeInfo order="last" language="kotlin" implementationClass="shapeTyping.ide.ShapeTypingExpressionShapeProvider"/>
+        <psi.referenceContributor language="kotlin" implementation="shapeTyping.ide.ShapeTypingPsiReferenceContributor"/>
+    </extensions>
+    <depends>org.jetbrains.kotlin</depends>
+    <extensions defaultExtensionNs="org.jetbrains.kotlin">
+        <storageComponentContainerContributor implementation="shapeTyping.plugin.ShapeTypingContainerContributor"/>
+        <extensions.typeAttributeTranslatorExtension implementation="shapeTyping.plugin.STypeAttributeTranslator"/>
+        <extensions.internal.callResolutionInterceptorExtension implementation="shapeTyping.plugin.STypeCandidateInterceptor"/>
+        <diagnosticSuppressor implementation="shapeTyping.plugin.STypeDiagnosticSuppressor"/>
+    </extensions>
+    <extensionPoints>
+        <extensionPoint name="shapeFunction" interface="shapeTyping.extensions.ShapeFunctionExtension"/>
+    </extensionPoints>
+    <extensions defaultExtensionNs="shapeTyping">
+        <shapeFunction implementation="shapeTyping.shapefunctions.ShapeFunctionExtension_matmul"/>
+        <shapeFunction implementation="shapeTyping.shapefunctions.ShapeFunctionExtension_broadcast"/>
+        <shapeFunction implementation="shapeTyping.shapefunctions.ShapeFunctionExtension_concat"/>
+        <shapeFunction implementation="shapeTyping.shapefunctions.ShapeFunctionExtension_concatOnAxis"/>
+        <shapeFunction implementation="shapeTyping.shapefunctions.ShapeFunctionExtension_flatten"/>
+        <shapeFunction implementation="shapeTyping.shapefunctions.ShapeFunctionExtension_slice"/>
+    </extensions>
+    <idea-version since-build="201.*" until-build="212.*"/>
+</idea-plugin>

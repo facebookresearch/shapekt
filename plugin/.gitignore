@@ -1,0 +1,10 @@
+# Gradle
+build/
+.gradle/
+
+# IDEA
+out/
+.idea/
+*.iml
+
+scripts/github.env
