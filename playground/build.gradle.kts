@@ -6,7 +6,7 @@
  */
 
 plugins {
-    kotlin("jvm") version "1.7.0-dev-444"
+    kotlin("jvm") version "1.7.0"
 }
 
 allprojects {
