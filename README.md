@@ -70,7 +70,8 @@ shapektExtensions {
 
 ### IntelliJ Plugin
 
-TODO: Instructions on downloading the IntelliJ
+The plugin is built to run in IntelliJ IDEA from Jetbrains. IntelliJ can be download
+from the following location [www.jetbrains.com/idea](https://www.jetbrains.com/idea/)
 
 ### Building From Source
 
@@ -115,14 +116,11 @@ To build the IDE plugin zip from source:
 ```
 The plugin zip should be in `ide-plugin/build/distributions`.
 
-## Tutorials
-
-Here are some tutorials to help you get started.
-TODO: Link several tutorials here.
-
 ## Contributing
 
-We welcome and greatly value all kinds of contributions to ShapeKt. If you would like to contribute, please see our Contributing Guidelines. // TODO Link to CONTRIBUTING.md or some other documentation on website.
+We welcome and greatly value all kinds of contributions to ShapeKt. If you would like to contribute, please see our Contributing Guidelines.
+
+[Contributing to ShapeKt](https://github.com/facebookresearch/shapekt/blob/main/CONTRIBUTING.md)
 
 ## License
 
