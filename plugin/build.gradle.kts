@@ -9,7 +9,7 @@
 plugins {
   // When updating the Kotlin version, remember to update the
   // kotlin version in the playground project as well.
-  kotlin("jvm") version "1.7.0-dev-444"
+  kotlin("jvm") version "1.7.0"
   `maven-publish`
 }
 
